@@ -5,10 +5,10 @@ import oop.exams.model.Region;
 public class LicensePlateGeneratorFactory {
 
     private final LicensePlateGenerator northLicensePlateGenerator = new NorthLicensePlateGenerator();
-    private final LicensePlateGenerator southLicensePlateGenerator = new NorthLicensePlateGenerator();
-    private final LicensePlateGenerator eastLicensePlateGenerator = new NorthLicensePlateGenerator();
-    private final LicensePlateGenerator westLicensePlateGenerator = new NorthLicensePlateGenerator();
-    private final LicensePlateGenerator centerLicensePlateGenerator = new NorthLicensePlateGenerator();
+    private final LicensePlateGenerator southLicensePlateGenerator = new SouthLicensePlateGenerator();
+    private final LicensePlateGenerator eastLicensePlateGenerator = new EastLicensePlateGenerator();
+    private final LicensePlateGenerator westLicensePlateGenerator = new WestLicensePlateGenerator();
+    private final LicensePlateGenerator centerLicensePlateGenerator = new CenterLicensePlateGenerator();
 
     public LicensePlateGenerator getInstance(String state) {
         return switch (state) {
