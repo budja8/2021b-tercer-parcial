@@ -1,6 +1,7 @@
 package oop.exams.generator;
 
 import oop.exams.exception.BadRegionException;
+import oop.exams.exception.NotAvailableLicensePlateException;
 import org.assertj.core.internal.bytebuddy.utility.RandomString;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +14,7 @@ public class DefaultLicensePlateGeneratorTest {
     public void givenADefaultState_whenGenerate_thenLicensePlateStartsWith1() {
 
         // Given:
-        LicensePlateGenerator licensePlateProvider = new DefaultLicensePlateGenerator();
+        LicensePlateGenerator licensePlateProvider = new CenterLicensePlateGenerator();
         String state = "SLP";
 
         // When:
@@ -30,6 +31,7 @@ public class DefaultLicensePlateGeneratorTest {
 
         // Given:
         LicensePlateGenerator licensePlateProvider = new DefaultLicensePlateGenerator();
+
 
         // When:
         String licensePlate1 = licensePlateProvider.generate("ZAC");
@@ -49,7 +51,8 @@ public class DefaultLicensePlateGeneratorTest {
         // When:
         // Then:
         assertThatThrownBy(() -> licensePlateProvider.generate(randomStateAbbreviation))
-                .isInstanceOf(BadRegionException.class)
-                .hasMessage("Allowed state codes: AGU, CMX, DUR, GUA, HID, MEX, PUE, QUE, SLP, TLA, ZAC");
+                .hasMessage("Allowed state codes: AGU, CMX, DUR, GUA, HID, MEX, PUE, QUE, SLP, TLA, ZAC")
+                .isInstanceOf(NotAvailableLicensePlateException.class)
+                .isInstanceOf(Exception.class);
     }
 }

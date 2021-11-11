@@ -1,8 +1,11 @@
 package oop.exams.generator;
 
 import oop.exams.exception.BadRegionException;
+import oop.exams.exception.NotAvailableLicensePlateException;
 import org.assertj.core.internal.bytebuddy.utility.RandomString;
 import org.junit.jupiter.api.Test;
+
+import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -50,7 +53,8 @@ public class EastLicensePlateGeneratorTest {
         // When:
         // Then:
         assertThatThrownBy(() -> licensePlateProvider.generate(randomStateAbbreviation))
+                .hasMessage("Allowed state codes: CAM, ROO, TAB, VER, YUC")
                 .isInstanceOf(BadRegionException.class)
-                .hasMessage("Allowed state codes: CAM, ROO, TAB, VER, YUC");
+                .isInstanceOf(RuntimeException.class);
     }
 }

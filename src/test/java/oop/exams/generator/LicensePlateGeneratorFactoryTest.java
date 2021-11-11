@@ -80,7 +80,7 @@ class LicensePlateGeneratorFactoryTest {
             LicensePlateGenerator instance = licensePlateGeneratorFactory.getInstance(state);
 
             // Then:
-            assertThat(instance).isInstanceOf(DefaultLicensePlateGenerator.class);
+            assertThat(instance).isInstanceOf(CenterLicensePlateGenerator.class);
         }
     }
 
